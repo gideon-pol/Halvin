@@ -19,12 +19,13 @@ The PC has multiple parts which are also available separately. The following sch
 - `parts/Register` - Register used in different parts of the computer.
 
 ## Instructions
-Instructions in the Halvin constist of 12 bits. The instructions are programmed through the instruction board, which use levers to store an instruction. Currently, there are 9 working instructions in the Halvin.
+The instructions are programmed through the instruction board, which use levers to store an instruction. Currently, there are 9 working instructions in the Halvin with some OP codes left open for future instructions. In the current full computer build, a program can consist of 16 instructions.
 
 ### Instruction bit layout
+Instructions in the Halvin are 12 bits wide.
+<img alt="Instruction layout" src="img/instr_layout.png" width="1000">
 
 ### OP codes
-
 ##### constant -> register
 `0b0001` - Moves a constant to a register. The first `register selection bit` is used to determine what register is used, and the constant is programmed in the `constant bits`.
 ##### constant -> ram 
@@ -40,12 +41,9 @@ Instructions in the Halvin constist of 12 bits. The instructions are programmed 
 ##### compare
 `0b1000` - Compares the value of the first selected register with the one in the second selected register. The ALU tests whether the first value is greater than the second, and whether they are equal. The results of this instruction are stored in temporary flag registers inside the ALU and are not accessible to a program.
 ##### jump if equal
-`0b1001` - Updates the `program counter` to point to an address in program memory if the `equal flag` is raised in the ALU. The address the `program counter` jumps to is given in the `constant bits`. Because this instruction is dependent on the `compare` instruction, `compare` should always be called before this instruction. Alternatively, 
+`0b1001` - Updates the `program counter` to point to an address in program memory if the `equal flag` is raised in the ALU. The address the `program counter` jumps to is given in the `constant bits`. Because this instruction is dependent on the `compare` instruction, `compare` should always be called before this instruction. Alternatively, a `register + register` or `register - register` instruction can be executed instead of `compare`, as those instructions also correctly update the ALU flag bits.
 ##### jump if greater
-`0b1001` - Updates the `program counter` to point to an address in program memory if the `greater than flag` is raised in the ALU. The bit layout is the same as the `jump if equal` instruction. A `compare` instruction should always proceed this instruction.
-
-
-
+`0b1010` - Updates the `program counter` to point to an address in program memory if the `greater than flag` is raised in the ALU. The bit layout is the same as the `jump if equal` instruction. This instruction too should be preceeded by the instructions mentioned in the `jump if equal` instruction.
 
 
 ## Screenshots
@@ -54,5 +52,4 @@ Instructions in the Halvin constist of 12 bits. The instructions are programmed 
   <img alt="PC Screens" src="img/pc-digit-binary-screens.png" width="400">
   <img alt="PC ALU" src="img/pc-alu-and-bus.png" width="400">
   <img alt="PC Instructions" src="img/pc-instructions.png" width="400"><br>
-  More screenshots are available <a href="https://github.com/gideon-pol/HalvinPC/wiki/Screenshots">here</a>.
 </p>
