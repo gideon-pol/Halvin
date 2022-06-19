@@ -23,7 +23,7 @@ The instructions are programmed through the instruction board, which use levers 
 
 ### Instruction bit layout
 Instructions in the Halvin are 12 bits wide.
-<img alt="Instruction layout" src="img/instr_layout.png" width="1000">
+<img alt="Instruction layout" src="img/instr-layout.png" width="1000">
 
 ### OP codes
 ##### constant -> register
