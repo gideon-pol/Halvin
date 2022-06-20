@@ -4,13 +4,13 @@ A (currently) 4 bit Minecraft computer.
 <img alt="PC Overview" src="img/pc-main.png">
 
 ## About
-<img src="https://img.shields.io/badge/build-passing-brightgreen" /> <img src="https://img.shields.io/badge/coverage-78%25-yellowgreen" /> <img src="https://img.shields.io/badge/contributors-4-brightgreen" /><br>
-The Halvin is a 4 bit computer build using redstone in Minecraft. It provides a very basic instruction set, which includes simple arithmetic (addition and subtraction), RAM operations and conditional branching. 
+<img src="https://img.shields.io/badge/build-passing-brightgreen" /> <img src="https://img.shields.io/badge/contributors-4-brightgreen" /><br>
+The Halvin is a 4 bit computer build using redstone in Minecraft. It was build for educational purposes, and is hence a very simple computer with no intention of being practical. The Halvin provides a very basic instruction set, which includes simple arithmetic (addition and subtraction), RAM operations and conditional branching. It has 2 `general purpose registers`, 8 x 4bit memory cells (4 bytes), an ALU with a built-in comparator and an instruction board to program on.
 
-<br><br>
+<br>
 
 ## Parts
-The PC has multiple parts which are also available separately. The following schematics are available:
+The PC has multiple parts which are available separately. The following World-Edit schematics are available:
 - `parts/4bit_decoder` - A 4 bit decoder used in the instructions and the 7 segment display.
 - `parts/7seg_dual_display` - A 7 segment dual digit display. Does not include decoder.
 - `parts/ALU_comparator` - ALU capable of subtracting and adding two 4 numbers. The ALU is also able to compare two numbers for equality and whether one number is greater than the other.
@@ -20,12 +20,14 @@ The PC has multiple parts which are also available separately. The following sch
 - `parts/RAM_XX` - RAM modules.
 - `parts/Register` - Register used in different parts of the computer.
 
+<br>
+
 ## Instructions
 The instructions are programmed through the instruction board, which uses levers to store an instruction. Currently, there are 9 working instructions in the Halvin with some OP codes left open for future instructions. In the current full computer build, a program can consist of 16 instructions.
 
 ### Instruction bit layout
 Instructions in the Halvin are 12 bits wide.
-<img alt="Instruction layout" src="img/instr_layout.png" width="1000">
+<img alt="Instruction layout" src="img/instr-layout.png" width="1000">
 
 ##### Op code bits
 Bits used to encode what instruction should be executed. The instructions with their corresponding op codes are explained in the next section.
@@ -38,6 +40,8 @@ Bits used in instructions that include memory operations. These bits are connect
 
 ##### Constant bits
 Bits connected to the `bus` and the `program counter`. The `constant bits` should only be used when executing an instruction involving a constant, or a jump. As these bits are connected to the `bus`, they CAN NOT be used in other instructions. This is because the `constant bits` will remain on the `bus` until the next instruction executes, meaning it will meddle with instructions that expect the bus to be empty.
+
+<br>
 
 ### OP codes
 ##### constant -> register
@@ -58,6 +62,8 @@ Bits connected to the `bus` and the `program counter`. The `constant bits` shoul
 `0b1001` - Updates the `program counter` to point to an address in program memory if the `equal flag` is raised in the ALU. The address the `program counter` jumps to is given in the instruction the `constant bits`. Because this instruction is dependent on the `compare` instruction, `compare` should always be called before this instruction. Not doing so is considerid undefinde behaviour.
 ##### jump if greater
 `0b1010` - Updates the `program counter` to point to an address in program memory if the `greater than flag` is raised in the ALU. The bit layout is the same as the `jump if equal` instruction. This instruction too should be preceeded by the `compare` instruction.
+
+<br>
 
 ## Screenshots
 <p>Below are some screenshots of the computer from different angles.<br>
