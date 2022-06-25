@@ -59,7 +59,7 @@ Bits connected to the `bus` and the `program counter`. The `constant bits` shoul
 ##### compare
 `0b1000` - Compares the value of the first selected register with the one in the second selected register. The ALU tests whether the first value is greater than the second, and whether they are equal. The results of this instruction are stored in temporary 1 bit `flag registers` inside the ALU and are not accessible to a program. This instruction is comparable to how the x86 architecture handles branching.
 ##### jump if equal
-`0b1001` - Updates the `program counter` to point to an address in program memory if the `equal flag` is raised in the ALU. The address the `program counter` jumps to is given in the instruction the `constant bits`. Because this instruction is dependent on the `compare` instruction, `compare` should always be called before this instruction. Not doing so is considerid undefinde behaviour.
+`0b1001` - Updates the `program counter` to point to an address in program memory if the `equal flag` is raised in the ALU. The address the `program counter` jumps to is given in the instruction the `constant bits`. Because this instruction is dependent on the `compare` instruction, `compare` should always be called before this instruction. Not doing so is considered undefined behaviour.
 ##### jump if greater
 `0b1010` - Updates the `program counter` to point to an address in program memory if the `greater than flag` is raised in the ALU. The bit layout is the same as the `jump if equal` instruction. This instruction too should be preceeded by the `compare` instruction.
 
