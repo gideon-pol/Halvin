@@ -16,9 +16,9 @@ The PC has multiple parts which are available separately. The following World-Ed
 - `parts/ALU_comparator` - ALU capable of subtracting and adding two 4 numbers. The ALU is also able to compare two numbers for equality and whether one number is greater than the other.
 - `parts/Bus_piece` - Piece of the bus used to connect all components. The bus can extend redstone pulses bidirectionally.
 - `parts/Instruction_board` - Board that is used for programming. Includes a decoder for a 4 bit program counter value.
-- `parts/PC_overwritable` - Program counter that can either be overwritten with a custom value.
-- `parts/RAM_XX` - RAM modules.
-- `parts/Register` - Register used in different parts of the computer.
+- `parts/PC_overwritable` - Program counter that can either be overwritten with a custom value, or incremented by 1 tick.
+- `parts/RAM_XX` - RAM modules that are addressable and can be read from and written to.
+- `parts/Register` - R/W Register used in different parts of the computer.
 
 <br>
 
